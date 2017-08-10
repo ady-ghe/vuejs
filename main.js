@@ -13,8 +13,8 @@ var app = new Vue({
   },
    methods: {
     resetCookies: function() {
-        var name = 'conversions';
-        document.cookie = name + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+        var cookieName = 'conversions';
+        document.cookie = cookieName + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
         this.getCookies();
     },
     
@@ -22,13 +22,12 @@ var app = new Vue({
     pullData: function() {
 		this.$http.get('https://api.fixer.io/latest').then(
 			(response) => {
-			  var currencies = [];
-			  $.each(response.body.rates, function(currency, rate) {
-				currencies.push({"id":rate, "text" :currency.toUpperCase()  });
-			  });  
-			 this.options = currencies;
-			 //console.log(this.options );
-			})
+				var currencies = [];
+				$.each(response.body.rates, function(currency, rate) {
+					currencies.push( {"id": rate, "text": currency.toUpperCase() });
+				});
+				this.options = currencies;
+			});
     },
     
     /* submit the Convert button */
@@ -38,7 +37,7 @@ var app = new Vue({
         var rateFromLabel = $("#from option:selected").text();
         var rateToLabel = $("#to option:selected").text();
         var rateTo = $(".currency-list")[1].value;
-        var cookieName = "conversions";
+        var cookieName = 'conversions';
         var cookie = $.cookie(cookieName);    
         if (!amount) {
             $("#error").show()
@@ -49,10 +48,9 @@ var app = new Vue({
             } else {
                 //add it in cookie if there are less than 100 values:   
                 let displayedText = amount + " " + rateFromLabel + " = " +(amount * (rateTo * (1 / rateFrom))).toFixed(2) + " " + rateToLabel;
+				let items = cookie ? cookie.split(/,/) : new Array();
+                let d = Date.now();				
                 $(".results").html(displayedText);
-                var items = cookie ? cookie.split(/,/) : new Array();
-                var d = Date.now();
-
                 if(items.length < 100) { 
                     items.push(d + "#" + displayedText);
                     $.cookie(cookieName, items.join(','), { expires : 30 });
