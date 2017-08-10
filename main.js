@@ -19,7 +19,7 @@ var app = new Vue({
 	},
 	
 	/* ajax web service */
-	pullEmployees: function() {
+	pullData: function() {
       this.$http.get('https://api.fixer.io/latest').then(
 		  (response) => {
 			  var currencies = [];
@@ -100,7 +100,7 @@ var app = new Vue({
   
   mounted(){
 	this.getCookies(),
-    this.pullEmployees()
+    this.pullData()
   }  
 	
 

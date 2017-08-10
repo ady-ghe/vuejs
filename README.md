@@ -1,2 +1,1 @@
-# vuejs project, Adi Gheorghe
-# vuejs
+# Vuejs 2 currency converter project
