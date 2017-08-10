@@ -4,27 +4,27 @@
 }
 
 .panel {
-  border-style:none;
+	border-style:none;
 }
 
 
 .results {
-  font-size: 36px;
-  font-weight:bold;
-  color: #303030;
+	font-size: 36px;
+	font-weight:bold;
+	color: #303030;
 }
 
 .dropdown {
-  margin-bottom: 50px;
+	margin-bottom: 50px;
 }
 
 .inline-block {
-  display: inline-block;
+	display: inline-block;
 }
 
 .center {
-  width: 90%;
-  margin: 0 auto 30px;
+	width: 90%;
+	margin: 0 auto 30px;
 }
 .panel-heading {
 	background: #45aaca;
@@ -37,7 +37,7 @@
 }
 
 th{
-    padding: 12px 12px 0px 0px !important;	
+	padding: 12px 12px 0px 0px !important;
 	text-align: center;
 }
 td {
@@ -48,5 +48,5 @@ td {
 
 
 #error {
-  display: none;
+	display: none;
 }
